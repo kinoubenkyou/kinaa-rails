@@ -21,4 +21,13 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_session_path
     assert_nil cookies[:session_id]
   end
+
+  test "destroy" do
+    sign_in_as(User.take)
+
+    delete session_path
+
+    assert_redirected_to new_session_path
+    assert_empty cookies[:session_id]
+  end
 end

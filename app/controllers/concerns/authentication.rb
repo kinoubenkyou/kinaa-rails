@@ -3,6 +3,7 @@ module Authentication
 
   included do
     before_action :require_authentication
+    helper_method :authenticated?
   end
 
   class_methods do
@@ -12,6 +13,10 @@ module Authentication
   end
 
   private
+    def authenticated?
+      resume_session
+    end
+
     def require_authentication
       resume_session || request_authentication
     end
@@ -38,5 +43,10 @@ module Authentication
         Current.session = session
         cookies.signed.permanent[:session_id] = { value: session.id, httponly: true, same_site: :lax }
       end
+    end
+
+    def terminate_session
+      Current.session.destroy
+      cookies.delete(:session_id)
     end
 end
