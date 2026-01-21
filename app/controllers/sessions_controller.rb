@@ -13,4 +13,9 @@ class SessionsController < ApplicationController
       redirect_to new_session_path, alert: "Try another email address or password."
     end
   end
+
+  def destroy
+    terminate_session
+    redirect_to new_session_path, status: :see_other
+  end
 end
