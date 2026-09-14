@@ -13,3 +13,7 @@ bundle install
 bundle exec rails db:prepare
 bundle exec rails server
 ```
+
+```shell
+bundle exec sidekiq
+```
