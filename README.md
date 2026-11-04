@@ -5,6 +5,7 @@
 - ruby
 - postgresql
 - redis
+- mailpit
 
 ## Run
 
