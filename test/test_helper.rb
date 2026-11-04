@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require "sidekiq/api"
 
 module ActiveSupport
   class TestCase
@@ -14,6 +15,7 @@ module ActiveSupport
 
     teardown do
       Rails.cache.clear
+      Sidekiq::Queue.new("default").clear
     end
   end
 end

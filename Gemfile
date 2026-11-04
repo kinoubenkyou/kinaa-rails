@@ -68,3 +68,5 @@ end
 gem "pg", "~> 1.7"
 
 gem "redis", "~> 6.0"
+
+gem "sidekiq", "~> 8.1"
