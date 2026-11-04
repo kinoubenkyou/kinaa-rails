@@ -4,6 +4,7 @@
 
 - ruby
 - postgresql
+- redis
 
 ## Run
 
